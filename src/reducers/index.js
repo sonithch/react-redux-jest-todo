@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
 
-import test from "./testReducer";
+import todos from "./todoReducer";
 
-export default combineReducers({ test });
+export default combineReducers({ todos });
