@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import TodoItem from "../todoItem/";
+import { addTodo } from "../../actions";
+
 const TodoContainer = () => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
@@ -12,8 +15,8 @@ const TodoContainer = () => {
 
   const handleSubmit = (e) => {
     const trimmedText = e.target.value.trim();
-    if (e.which == 13 && trimmedText) {
-      dispatch({ type: "addTodo", payload: trimmedText });
+    if (e.which === 13 && trimmedText) {
+      dispatch(addTodo(trimmedText));
       setText("");
     }
   };
@@ -27,7 +30,7 @@ const TodoContainer = () => {
         onKeyDown={handleSubmit}
       />
 
-      <ul>{todos && todos.map((todo) => <li key={todo.id}>{todo.text}</li>)}</ul>
+      <ul>{todos && todos.map((todo) => <TodoItem {...todo} />)}</ul>
     </div>
   );
 };

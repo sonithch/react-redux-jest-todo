@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
           ...state.todos,
           {
             id: nextTodoId(state.todos),
-            text: action.payload,
+            text: action.payload.text,
             completed: false,
           },
         ],
@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         todos: state.todos.map((todo) => {
-          if (todo.id !== action.payload) {
+          if (todo.id !== action.payload.id) {
             return todo;
           }
 
